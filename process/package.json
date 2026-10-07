@@ -1,0 +1,44 @@
+{
+  "name": "process-remote",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --port 4201",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular-architects/module-federation": "^14.3.0",
+    "@angular/animations": "^14.3.0",
+    "@angular/cdk": "^14.2.7",
+    "@angular/common": "^14.3.0",
+    "@angular/compiler": "^14.3.0",
+    "@angular/core": "^14.3.0",
+    "@angular/forms": "^14.3.0",
+    "@angular/material": "^14.2.7",
+    "@angular/platform-browser": "^14.3.0",
+    "@angular/platform-browser-dynamic": "^14.3.0",
+    "@angular/router": "^14.3.0",
+    "@ng-bootstrap/ng-bootstrap": "^12.1.2",
+    "@ng-select/ng-select": "^8.1.1",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
+    "bootstrap": "^5.2.3",
+    "dayjs": "^1.11.9",
+    "moment": "^2.30.1",
+    "ngx-cookie-service": "^13.1.2",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.10",
+    "@angular/cli": "~14.2.10",
+    "@angular/compiler-cli": "^14.3.0",
+    "@types/node": "^16.11.0",
+    "ngx-build-plus": "^14.0.0",
+    "typescript": "~4.7.2"
+  }
+}
