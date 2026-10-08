@@ -1,0 +1,301 @@
+@use '../../styles/processx-tokens' as px;
+
+// Theo Figma ProcessX "Date pickers input" + "Date pickers / Date single" (node 71:10555).
+
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.dp {
+  position: relative;
+  width: 100%;
+}
+
+// ===== Ô hiển thị: cao 48, radius 12, icon lịch 24 =====
+.dp-field {
+  @include px.field-box;
+  @include px.body-md-regular;
+  display: flex;
+  align-items: center;
+  gap: px.$space-8;
+  width: 100%;
+  @include px.field-size(middle);
+  cursor: pointer;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    border-color: px.$neutral-800;
+  }
+}
+
+.dp-open .dp-field {
+  border-color: px.$neutral-800;
+}
+
+.dp-status-error .dp-field {
+  border-color: px.$primary-600;
+}
+
+.dp-status-warning .dp-field {
+  border-color: px.$warning;
+}
+
+.dp-disabled .dp-field {
+  background: px.$neutral-100;
+  border-color: px.$neutral-300;
+  color: px.$neutral-800;
+  cursor: not-allowed;
+}
+
+.dp-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: px.$neutral-900;
+}
+
+.dp-placeholder {
+  flex: 1;
+  min-width: 0;
+  color: px.$neutral-500;
+}
+
+.dp-range-part {
+  flex: 0 1 auto;
+}
+
+.dp-separator {
+  color: px.$neutral-500;
+}
+
+.dp-clear {
+  display: none;
+  align-items: center;
+  margin-left: auto;
+  color: px.$neutral-400;
+  cursor: pointer;
+
+  &:hover {
+    color: px.$neutral-600;
+  }
+}
+
+.dp-suffix {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+// Hover vào ô có giá trị: hiện nút xoá thay cho icon lịch
+.dp-has-value:not(.dp-disabled) .dp-field:hover {
+  .dp-clear {
+    display: inline-flex;
+  }
+
+  .dp-suffix {
+    display: none;
+  }
+}
+
+// ===== Popup: rộng 312, padding 16, radius 16, Effect menu =====
+.dp-panel {
+  position: absolute;
+  top: calc(100% + #{px.$space-8});
+  left: 0;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  gap: px.$space-8;
+  width: 312px;
+  padding: px.$space-16;
+  background: px.$white;
+  border: 1px solid px.$neutral-300;
+  border-radius: px.$space-16;
+  box-shadow: px.$shadow-menu;
+  backdrop-filter: blur(16px);
+  box-sizing: border-box;
+  animation: dpSlide 0.18s ease;
+}
+
+.dp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: px.$space-8;
+  border: none;
+  border-radius: px.$radius-md;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background: px.$neutral-100;
+  }
+}
+
+.dp-title {
+  font-family: px.$font-family;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: px.$neutral-900;
+}
+
+.dp-toolbar {
+  display: flex;
+  gap: px.$space-8;
+}
+
+.dp-input {
+  @include px.body-sm-regular;
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  padding: px.$space-8 px.$space-12;
+  border: 1px solid px.$neutral-300;
+  border-radius: px.$radius-md;
+  outline: none;
+  color: px.$neutral-900;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: px.$neutral-500;
+  }
+
+  &:focus {
+    border-color: px.$neutral-800;
+  }
+}
+
+.dp-today,
+.dp-preset {
+  font-family: px.$font-family;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: px.$space-8 px.$space-16;
+  border: 1px solid px.$primary-400;
+  border-radius: px.$radius-md;
+  background: px.$white;
+  color: px.$primary-600;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: px.$neutral-100;
+  }
+}
+
+.dp-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: px.$space-8;
+
+  .dp-preset {
+    padding: px.$space-4 px.$space-12;
+    border-color: px.$neutral-300;
+    color: px.$neutral-800;
+
+    &:hover {
+      border-color: px.$neutral-800;
+      background: px.$white;
+    }
+  }
+}
+
+// ===== Lưới lịch: 7 cột x 40px, hàng cách 4px =====
+.dp-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: px.$space-4;
+  width: 280px;
+}
+
+.dp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+}
+
+.dp-weekday {
+  padding: 10px;
+  font-family: px.$font-family;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: px.$neutral-900;
+}
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  row-gap: px.$space-4;
+}
+
+.dp-cell {
+  @include px.body-sm-regular;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  color: px.$neutral-900;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover:not(.dp-cell-selected) {
+    background: px.$neutral-100;
+  }
+
+  &.dp-cell-outside {
+    color: px.$neutral-500;
+  }
+
+  &.dp-cell-in-range {
+    background: px.$neutral-200;
+  }
+
+  &.dp-cell-selected {
+    background: px.$primary-500;
+    color: px.$white;
+  }
+}
+
+// Chấm đỏ đánh dấu hôm nay
+.dp-dot {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translateX(-50%);
+}
+
+@keyframes dpSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sizes: small 40 · middle 48 (mặc định) · large 56 — xem $field-sizes */
+.dp-sm .dp-field {
+  @include px.field-size(small);
+
+  .dp-suffix {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.dp-lg .dp-field {
+  @include px.field-size(large);
+}

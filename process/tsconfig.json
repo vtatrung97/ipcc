@@ -59,6 +59,12 @@
       ],
       "@env/*": [
         "environments/*"
+      ],
+      "@environments": [
+        "environments"
+      ],
+      "@environments/*": [
+        "environments/*"
       ]
     },
     "strictPropertyInitialization": false

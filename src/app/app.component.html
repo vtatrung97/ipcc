@@ -1,0 +1,48 @@
+<div class="layout-container">
+  <!-- SIDEBAR (Mô phỏng Sidebar IPCC 2.0) -->
+  <aside class="sidebar">
+    <div class="logo-box">
+      <span class="logo-icon">☁️</span>
+      <span class="logo-text">IPCC 2.0 SHELL</span>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Tìm kiếm menu..." />
+    </div>
+
+    <!-- ==========================================*Note thêm========================================== -->
+    <!-- Danh sách Menu động nạp trực tiếp từ LocalStorage (qua MenuService) -->
+    <div class="menu-section-title">DANH MỤC MENU (LOCAL STORAGE)</div>
+    <nav class="nav-menu">
+      <a *ngFor="let item of (menus$ | async)"
+         [routerLink]="item.url" 
+         routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: item.url === '/process' || item.url === '/dashboards'}"
+         class="nav-item"
+         [class.remote-item]="item.isRemote">
+        <span class="icon">{{ item.icon || '📌' }}</span> 
+        <span class="menu-title">{{ item.name }}</span>
+        <span class="badge-tag" *ngIf="item.isRemote">Remote</span>
+      </a>
+    </nav>
+    <!-- ============================================================================================ -->
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="system-status">🟢 Hệ thống sẵn sàng</span>
+      </div>
+      <div class="topbar-right">
+        <span class="user-badge">👤 Xin chào: Admin</span>
+      </div>
+    </header>
+
+    <!-- Nơi render các trang nội bộ của IPCC hoặc Remote Module con -->
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
