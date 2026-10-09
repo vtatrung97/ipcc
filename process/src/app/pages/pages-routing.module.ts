@@ -4,10 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'procedure-management',
+    pathMatch: 'full'
+  },
+  {
+    path: 'procedure-management',
     loadChildren: () => import('./features/process-list/process-list.module').then(m => m.ProcessListModule)
   },
   {
-    path: 'create',
+    path: 'process-management',
     loadChildren: () => import('./features/process-create/process-create.module').then(m => m.ProcessCreateModule)
   }
 ];

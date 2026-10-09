@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TabBarComponent } from './components/tab-bar/tab-bar.component';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
-import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
+import { LayoutComponent } from './layout.component';
+import { AsideComponent } from './aside/aside.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    SidebarComponent,
-    HeaderComponent,
-    TabBarComponent,
-    MainLayoutComponent,
-    BlankLayoutComponent
+    LayoutComponent,
+    AsideComponent,
+    TopBarComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -25,11 +23,10 @@ import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.compon
     SharedModule
   ],
   exports: [
-    MainLayoutComponent,
-    BlankLayoutComponent,
-    SidebarComponent,
-    HeaderComponent,
-    TabBarComponent
+    LayoutComponent,
+    AsideComponent,
+    TopBarComponent,
+    FooterComponent
   ]
 })
 export class LayoutModule { }

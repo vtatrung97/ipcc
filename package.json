@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 4200 --live-reload=false",
     "start:process": "cd process && npm start",
+    "start:all": "concurrently -n IPCC-4200,PROCESS-4201 -c cyan,magenta \"npm:start\" \"npm:start:process\"",
     "build": "ng build",
     "build:process": "cd process && npm run build",
     "build:all": "npm run build && cd process && npm run build",
@@ -41,6 +42,7 @@
     "@angular/cli": "~14.2.10",
     "@angular/compiler-cli": "^14.3.0",
     "@types/node": "^16.11.0",
+    "concurrently": "^7.6.0",
     "ngx-build-plus": "^14.0.0",
     "typescript": "~4.7.2"
   }

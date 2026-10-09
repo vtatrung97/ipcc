@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService, MenuItem } from '../../services/menu.service';
+import { MenuService, MenuItem } from '../../core/services/menu.service';
 
 @Component({
   selector: 'app-role-menu',
@@ -336,9 +336,9 @@ export class RoleMenuComponent implements OnInit {
     icon: '🚀'
   };
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   setPreset(name: string, code: string, url: string, icon: string): void {
     this.newMenu = { name, code, url, icon };

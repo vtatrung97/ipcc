@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentMate Chatbot Embed</title>
+</head>
+<body>
+  <script src="./env.js"></script>
+  <script>
+    (function () {
+      if (window.env && window.env.AGENTMATE) {
+        var agentMateConfig = window.env.AGENTMATE;
+        var script = document.createElement('script');
+        script.src = agentMateConfig.loaderUrl;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    })();
+  </script>
+</body>
+</html>

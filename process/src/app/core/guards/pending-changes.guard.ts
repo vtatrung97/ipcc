@@ -15,19 +15,20 @@ export class PendingChangesGuard implements CanDeactivate<ComponentCanDeactivate
   constructor(
     private modalService: NgbModal,
     private translateSvc: TranslateService,
-  ) {}
+  ) {
+  }
 
   canDeactivate(
     component: ComponentCanDeactivate,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return component.canDeactivate() ? true : this.confirmLeave();
+    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return component.canDeactivate() ?
+      true : this.confirmLeave()
   }
 
-  confirmLeave(): boolean {
-    if (confirm(this.translateSvc.instant('common.warning.confirm-leave') || 'Are you sure you want to leave?')) {
+  confirmLeave() {
+    if (confirm(this.translateSvc.instant("common.warning.confirm-leave"))) {
       this.modalService.dismissAll();
       return true;
     } else {
