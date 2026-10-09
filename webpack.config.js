@@ -25,7 +25,7 @@ const originalConfig = {
       ...(hasStyleLoader ? [
         {
           test: /\.svg$/,
-          use: [ 'raw-loader' ]
+          use: ['raw-loader']
         },
         {
           test: /\.css$/,
@@ -41,12 +41,12 @@ const originalConfig = {
             },
             ...(styles ? [{
               loader: 'postcss-loader',
-              options: styles.getPostCssConfig( {
+              options: styles.getPostCssConfig({
                 themeImporter: {
-                  themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
+                  themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
                 },
                 minify: true
-              } )
+              })
             }] : [])
           ]
         }
@@ -57,7 +57,7 @@ const originalConfig = {
 
 
 
-// ==========================================*Note thêm==========================================
+// ==========================================*Process==========================================
 // Phần cấu hình bổ sung bên dưới để tích hợp Micro Frontend (Webpack 5 Module Federation)
 const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 

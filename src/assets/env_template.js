@@ -172,7 +172,7 @@
   window.env.WHATSAPP = WHATSAPP;
 
   // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = '${PROCESS_REMOTE_URL}' || '/process-mfe/remoteEntry.js';
+  window.env.processRemoteUrl = '${PROCESS_REMOTE_URL}' || '/process/remoteEntry.js';
 
   console.log("=========================AGENT_WEB_PROFILE=========================");
   console.log("PROFILE " + PROFILE + ", ENV: ", window.env);

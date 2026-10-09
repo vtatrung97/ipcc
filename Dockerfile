@@ -1,44 +1,50 @@
-# ===================================================
-# Stage 1: Build Host (ipcc) & Remote (process) Apps
-# ===================================================
+# ==========================================Cấu hình gốc IPCC==========================================
+# Stage 1: Build IPCC Host App
 FROM node:18-alpine AS builder
 
 WORKDIR /app
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 
-# 1. Build Host App (ipcc)
+# Cài đặt dependencies và build IPCC Shell gốc
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 COPY . .
-
-# Xóa bớt folder process tạm thời trong lần build ipcc nếu cần hoặc build trực tiếp ipcc
 RUN npm run build -- --configuration=production
 
-# 2. Build Remote App (process)
+# ==========================================*Process==========================================
+# Stage bổ sung bên dưới để build Remote App (Process) phục vụ Micro Frontend
+FROM node:18-alpine AS process-builder
+
 WORKDIR /app/process
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 
-RUN npm ci
+COPY process/package*.json ./
+RUN npm ci --legacy-peer-deps
 
-# Build process với base-href và deploy-url là /process/
+COPY process/ ./
 RUN npm run build -- --configuration=production --base-href=/process/ --deploy-url=/process/
+# ============================================================================================
 
-# ===================================================
-# Stage 2: Serve with Nginx Alpine (Single Image)
-# ===================================================
+
+# ==========================================Cấu hình gốc IPCC==========================================
+# Stage 2: Serve với Nginx Alpine
 FROM nginx:1.25-alpine
 
 # Xóa các file tĩnh mặc định của Nginx
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy kết quả build của Host (ipcc) vào thư mục gốc nginx html
+# Copy kết quả build của Host (IPCC) vào thư mục web gốc
 COPY --from=builder /app/dist/ipcc /usr/share/nginx/html
 
-# Copy kết quả build của Remote (process) vào thư mục con /process
-COPY --from=builder /app/process/dist/process /usr/share/nginx/html/process
-
-# Copy file cấu hình Nginx gốc và site default.conf
+# Copy cấu hình Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
+
+# ==========================================*Note thêm==========================================
+# Copy kết quả build của Remote (Process) vào thư mục con /process để phục vụ Module Federation
+COPY --from=process-builder /app/process/dist/process /usr/share/nginx/html/process
+# ============================================================================================
 
 EXPOSE 80
 

@@ -20,7 +20,7 @@ export const AGENTMATE = windowEnv.AGENTMATE;
 export const WHATSAPP = windowEnv.WHATSAPP;
 
 // Cấu hình URL nạp remote entry cho Micro Frontend Process
-export const processRemoteUrl = windowEnv.processRemoteUrl || '/process-mfe/remoteEntry.js';
+export const processRemoteUrl = windowEnv.processRemoteUrl || '/process/remoteEntry.js';
 export const processUrl = processRemoteUrl;
 
 export const environment = {

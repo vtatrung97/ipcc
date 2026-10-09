@@ -9,11 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'procedure-management',
-    loadChildren: () => import('./features/process-list/process-list.module').then(m => m.ProcessListModule)
+    loadChildren: () => import('./features/procedure-management/procedure-management.module').then(m => m.ProcedureManagementModule)
   },
   {
     path: 'process-management',
-    loadChildren: () => import('./features/process-create/process-create.module').then(m => m.ProcessCreateModule)
+    loadChildren: () => import('./features/process-management/process-management.module').then(m => m.ProcessManagementModule)
   }
 ];
 

@@ -1,0 +1,13 @@
+**/.angular
+.angular
+**/node_modules
+node_modules
+process/node_modules
+process/split
+split
+dist
+**/dist
+.git
+*.zip
+learn
+tmp

@@ -180,5 +180,5 @@
   window.env.WHATSAPP = WHATSAPP;
 
   // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = window.env.processRemoteUrl || '/process-mfe/remoteEntry.js';
+  window.env.processRemoteUrl = window.env.processRemoteUrl || '/process/remoteEntry.js';
 })(this);

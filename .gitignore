@@ -21,3 +21,10 @@ Thumbs.db
 
 # Angular cache
 .angular/
+**/.angular/
+
+# Archives & Temporary
+*.zip
+split/
+**/split/
+

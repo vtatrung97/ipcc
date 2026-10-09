@@ -2,21 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ProcessCreateComponent } from './process-create.component';
-import { ProcessCreateRoutingModule } from './process-create-routing.module';
+import { ProcessManagementComponent } from './process-management.component';
+import { ProcessManagementRoutingModule } from './process-management-routing.module';
 
 @NgModule({
   declarations: [
-    ProcessCreateComponent
+    ProcessManagementComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    ProcessCreateRoutingModule
+    ProcessManagementRoutingModule
   ],
   exports: [
-    ProcessCreateComponent
+    ProcessManagementComponent
   ]
 })
-export class ProcessCreateModule { }
+export class ProcessManagementModule { }

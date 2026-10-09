@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProcessCreateComponent } from './process-create.component';
+import { ProcedureManagementComponent } from './procedure-management.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProcessCreateComponent
+    component: ProcedureManagementComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProcessCreateRoutingModule { }
+export class ProcedureManagementRoutingModule { }
