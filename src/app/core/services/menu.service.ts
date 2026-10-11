@@ -23,8 +23,8 @@ export class MenuService {
     { name: 'Quản lý menu', code: 'ipcc2-role-menu', url: '/role-menu', icon: '⚙️' },
     { name: 'Quản lý gói cước', code: 'ipcc2-packages', url: '/dashboards', icon: '📦' },
     { name: 'Quản lý người dùng', code: 'ipcc2-users', url: '/dashboards', icon: '👥' },
-    { name: 'Danh sách quy trình', code: 'proc-list', url: '/process', icon: '📑', isRemote: true },
-    { name: 'Tạo mới quy trình', code: 'proc-create', url: '/process/create', icon: '➕', isRemote: true }
+    { name: 'Danh sách quy trình', code: 'proc-list', url: '/processX', icon: '📑', isRemote: true },
+    { name: 'Quản lý tiến trình', code: 'proc-management', url: '/processX/process-management', icon: '⚙️', isRemote: true }
   ];
 
   private menusSubject = new BehaviorSubject<MenuItem[]>(this.loadMenus());
@@ -36,7 +36,8 @@ export class MenuService {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
       if (data) {
-        return JSON.parse(data);
+        const parsed: MenuItem[] = JSON.parse(data);
+        return parsed.map(m => m.url === '/process' ? { ...m, url: '/processX' } : m);
       }
     } catch (e) {
       console.error('Lỗi khi đọc menu từ localStorage:', e);
@@ -60,7 +61,7 @@ export class MenuService {
 
   addMenu(newMenu: MenuItem): void {
     const current = this.menusSubject.value;
-    const isRemote = newMenu.url.startsWith('/process');
+    const isRemote = newMenu.url.startsWith('/processX') || newMenu.url.startsWith('/process');
     const updated = [...current, { ...newMenu, isRemote, id: Date.now().toString() }];
     this.saveToStorage(updated);
     this.menusSubject.next(updated);

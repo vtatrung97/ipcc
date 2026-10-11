@@ -17,7 +17,7 @@
       <a *ngFor="let item of (menus$ | async)"
          [routerLink]="item.url" 
          routerLinkActive="active" 
-         [routerLinkActiveOptions]="{exact: item.url === '/process' || item.url === '/dashboards'}"
+         [routerLinkActiveOptions]="{exact: item.url === '/processX' || item.url === '/process' || item.url === '/dashboards'}"
          class="nav-item"
          [class.remote-item]="item.isRemote">
         <span class="icon">{{ item.icon || '📌' }}</span> 

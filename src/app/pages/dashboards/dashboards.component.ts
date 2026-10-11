@@ -25,7 +25,7 @@ import { Component } from '@angular/core';
       </div>
 
       <div class="guide-banner">
-        <h4>💡 Bạn đang xem ứng dụng IPCC Host Shell (Port 4200)</h4>
+        <h4>💡 Bạn đang xem ứng dụng IPCC Host Shell</h4>
         <p>Để kiểm tra nạp Remote App qua Module Federation, hãy click vào menu <strong>"Danh sách quy trình"</strong> trên thanh menu bên trái!</p>
       </div>
     </div>

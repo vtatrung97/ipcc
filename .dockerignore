@@ -3,6 +3,7 @@
 **/node_modules
 node_modules
 process/node_modules
+processX/node_modules
 process/split
 split
 dist

@@ -178,7 +178,4 @@
   window.env.CALL_BOT = CALL_BOT;
   window.env.AGENTMATE = AGENTMATE;
   window.env.WHATSAPP = WHATSAPP;
-
-  // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = window.env.processRemoteUrl || '/process-mfe/remoteEntry.js';
 })(this);

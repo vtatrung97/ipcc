@@ -1,9 +1,9 @@
 const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
 const mfConfig = withModuleFederationPlugin({
-  name: 'process',
+  name: 'processX',
   exposes: {
-    './ProcessModule': './src/app/pages/pages.module.ts',
+    './ProcessXModule': './src/app/pages/pages.module.ts',
   },
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
@@ -12,6 +12,13 @@ const mfConfig = withModuleFederationPlugin({
 
 module.exports = {
   ...mfConfig,
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': '*'
+    }
+  },
   watchOptions: {
     ignored: [
       '**/.angular/**',

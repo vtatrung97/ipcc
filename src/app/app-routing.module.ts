@@ -15,13 +15,24 @@ const routes: Routes = [
   // Phần cấu hình bổ sung bên dưới để nạp động Remote Module (Process) theo chuẩn Micro Frontend
   {
     path: 'process',
+    redirectTo: 'processX'
+  },
+  {
+    path: 'processX',
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: environment.processRemoteUrl,
-        exposedModule: './ProcessModule'
+        remoteEntry: environment.WEB_PROCESSX,
+        exposedModule: './ProcessXModule'
       })
-        .then(m => m.PagesModule)
+        .then(m => {
+          console.log('[MFE] Nạp phân hệ ProcessX thành công:', m);
+          return m.PagesModule;
+        })
+        .catch(err => {
+          console.error('[MFE] Nạp phân hệ ProcessX thất bại:', err);
+          throw err;
+        })
   },
 
   {

@@ -20,10 +20,7 @@ export const FACEBOOK_PROPERTIES = windowEnv.FACEBOOK_PROPERTIES;
 export const CALL_BOT = windowEnv.CALL_BOT;
 export const AGENTMATE = windowEnv.AGENTMATE;
 export const WHATSAPP = windowEnv.WHATSAPP;
-
-// Cấu hình URL nạp remote entry cho Micro Frontend Process
-export const processRemoteUrl = windowEnv.processRemoteUrl || '/process/remoteEntry.js';
-export const processUrl = processRemoteUrl;
+export const WEB_PROCESSX = windowEnv.WEB_PROCESSX;
 
 export const environment = {
   production: true,
@@ -35,7 +32,5 @@ export const environment = {
   CALL_BOT: CALL_BOT,
   AGENTMATE: AGENTMATE,
   WHATSAPP: WHATSAPP,
-
-  processRemoteUrl: processRemoteUrl,
-  processUrl: processUrl,
+  WEB_PROCESSX: WEB_PROCESSX,
 };

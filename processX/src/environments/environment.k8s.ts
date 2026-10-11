@@ -18,6 +18,7 @@ export const FACEBOOK_PROPERTIES = windowEnv.FACEBOOK_PROPERTIES || {};
 export const CALL_BOT = windowEnv.CALL_BOT || {};
 export const AGENTMATE = windowEnv.AGENTMATE || {};
 export const WHATSAPP = windowEnv.WHATSAPP || {};
+export const WEB_PROCESSX = windowEnv.WEB_PROCESSX || windowEnv.PROCESSX || '';
 
 export const environment = {
   production: true,
@@ -29,4 +30,5 @@ export const environment = {
   CALL_BOT: CALL_BOT,
   AGENTMATE: AGENTMATE,
   WHATSAPP: WHATSAPP,
+  WEB_PROCESSX: WEB_PROCESSX,
 };

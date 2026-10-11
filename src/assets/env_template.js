@@ -16,39 +16,40 @@
   const BCCS_URL = "http://10.240.147.246/BCCS_CC/";
   const ZALO_AUTH_URL = "https://oauth.zaloapp.com/v4";
   const ZALO_CALLBACK = "${ZALO_CALLBACK}";
+  const WEB_PROCESSX = '${WEB_PROCESSX}';
 
   const SERVICES = {
-    CROSSBAR: {url: '${CROSSBAR_PUBLIC}', authJwt: false, crossbarJwt: true},
-    ACCOUNT_API: {url: '${ACCOUNT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    ACD_SERVICE_API: {url: '${ACD_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    CHAT_SERVER_API: {url: '${CHAT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    AGENT_SERVER_API: {url: '${AGENT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    AGENT_NOTIFY_SERVER_API: {url: '${AGENT_NOTIFY_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    NOTIFICATION_SERVER_API: {url: '${NOTIFICATION_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    CHAT_SERVICE_API: {url: '${CHAT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    EMAIL_SERVICE_API: {url: '${EMAIL_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    TICKET_SERVICE_API: {url: '${TICKET_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    CAMPAIGN_SERVICE_API: {url: '${CAMPAIGN_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    CCMS_SERVICE_API: {url: '${CCMS_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    PIVOT_SERVICE_API: {url: '${PIVOT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    SERVICE_PIVOT_API: {url: '${PIVOT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    EMAIL_GATEWAY_SERVICE_API: {url: '${EMAIL_GATEWAY_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    SOCIAL_GATEWAY_SERVICE_API: {url: '${SOCIAL_GATEWAY_PUBLIC}', authJwt: true, crossbarJwt: false},
-    REPORT_SERVICE_API: {url: '${REPORT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    QUALITY_SERVICE_API: {url: '${QUALITY_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    MONITOR_SERVER_API: {url: '${MONITOR_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    FIREBASE_API: {url: 'https://onesignal.com', authJwt: false, crossbarJwt: false},
-    METABASE_API: {url: '${METABASE_SERVICE_PUBLIC}', authJwt: false, crossbarJwt: false},
-    HAPPY_CALL_SERVICE_API: {url: '${HAPPY_CALL_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    SCORE_SERVICE_API: {url: '${SCORE_SERVICE_PUBLIC}', authJwt: false, crossbarJwt: false},
-    CALL_BACK_SERVICE_API: {url: '${CALLBACK_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false},
-    BOT_SERVER_API: {url: '${BOT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false},
-    CALL_BOT_SERVICE_API: {url: 'https://171.226.10.112/predict', authJwt: false, crossbarJwt: false},
+    CROSSBAR: { url: '${CROSSBAR_PUBLIC}', authJwt: false, crossbarJwt: true },
+    ACCOUNT_API: { url: '${ACCOUNT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    ACD_SERVICE_API: { url: '${ACD_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    CHAT_SERVER_API: { url: '${CHAT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    AGENT_SERVER_API: { url: '${AGENT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    AGENT_NOTIFY_SERVER_API: { url: '${AGENT_NOTIFY_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    NOTIFICATION_SERVER_API: { url: '${NOTIFICATION_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    CHAT_SERVICE_API: { url: '${CHAT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    EMAIL_SERVICE_API: { url: '${EMAIL_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    TICKET_SERVICE_API: { url: '${TICKET_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    CAMPAIGN_SERVICE_API: { url: '${CAMPAIGN_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    CCMS_SERVICE_API: { url: '${CCMS_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    PIVOT_SERVICE_API: { url: '${PIVOT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    SERVICE_PIVOT_API: { url: '${PIVOT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    EMAIL_GATEWAY_SERVICE_API: { url: '${EMAIL_GATEWAY_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    SOCIAL_GATEWAY_SERVICE_API: { url: '${SOCIAL_GATEWAY_PUBLIC}', authJwt: true, crossbarJwt: false },
+    REPORT_SERVICE_API: { url: '${REPORT_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    QUALITY_SERVICE_API: { url: '${QUALITY_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    MONITOR_SERVER_API: { url: '${MONITOR_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    FIREBASE_API: { url: 'https://onesignal.com', authJwt: false, crossbarJwt: false },
+    METABASE_API: { url: '${METABASE_SERVICE_PUBLIC}', authJwt: false, crossbarJwt: false },
+    HAPPY_CALL_SERVICE_API: { url: '${HAPPY_CALL_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    SCORE_SERVICE_API: { url: '${SCORE_SERVICE_PUBLIC}', authJwt: false, crossbarJwt: false },
+    CALL_BACK_SERVICE_API: { url: '${CALLBACK_SERVICE_PUBLIC}', authJwt: true, crossbarJwt: false },
+    BOT_SERVER_API: { url: '${BOT_SERVER_PUBLIC}', authJwt: true, crossbarJwt: false },
+    CALL_BOT_SERVICE_API: { url: 'https://171.226.10.112/predict', authJwt: false, crossbarJwt: false },
   };
   /*========================================================================*/
 
   const LOCAL_SERVICES = {
-    PIVOT_SERVICE_API: {url: '${PIVOT_SERVICE_LOCAL}', authJwt: true, crossbarJwt: false}
+    PIVOT_SERVICE_API: { url: '${PIVOT_SERVICE_LOCAL}', authJwt: true, crossbarJwt: false }
   };
   /*========================================================================*/
   const ZONE_ALIAS = {
@@ -170,9 +171,7 @@
   window.env.CALL_BOT = CALL_BOT;
   window.env.AGENTMATE = AGENTMATE;
   window.env.WHATSAPP = WHATSAPP;
-
-  // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = '${PROCESS_REMOTE_URL}' || '/process/remoteEntry.js';
+  window.env.WEB_PROCESSX = WEB_PROCESSX;
 
   console.log("=========================AGENT_WEB_PROFILE=========================");
   console.log("PROFILE " + PROFILE + ", ENV: ", window.env);

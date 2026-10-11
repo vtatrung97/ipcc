@@ -3,12 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4200 --live-reload=false",
-    "start:process": "cd process && npm start",
-    "start:all": "concurrently -n IPCC-4200,PROCESS-4201 -c cyan,magenta \"npm:start\" \"npm:start:process\"",
+    "start": "ng serve",
     "build": "ng build",
-    "build:process": "cd process && npm run build",
-    "build:all": "npm run build && cd process && npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

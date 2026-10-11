@@ -18,34 +18,35 @@
   const BCCS_URL = "https://10.240.147.246/BCCS_CC/home";
   const ZALO_AUTH_URL = "https://oauth.zaloapp.com/v4";
   const ZALO_CALLBACK = "https://cc.vietteltelecom.vn/chat-service/public/api/v1/zalo-accounts/callback";
+  const WEB_PROCESSX = '/processX/remoteEntry.js';
 
   const SERVICES = {
-    CROSSBAR: {url: 'https://cc.vietteltelecom.vn/hni6-kapps', authJwt: false, crossbarJwt: true},
-    ACCOUNT_API: {url: 'https://cc.vietteltelecom.vn/account-server', authJwt: true, crossbarJwt: false},
-    ACD_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/acd-service', authJwt: true, crossbarJwt: false},
-    CHAT_SERVER_API: {url: 'https://cc.vietteltelecom.vn/chat-server', authJwt: true, crossbarJwt: false},
-    AGENT_SERVER_API: {url: 'https://cc.vietteltelecom.vn/agent-server', authJwt: true, crossbarJwt: false},
-    AGENT_NOTIFY_SERVER_API: {url: 'https://cc.vietteltelecom.vn/agent-notify-server', authJwt: true, crossbarJwt: false},
-    NOTIFICATION_SERVER_API: {url: 'https://cc.vietteltelecom.vn/notification-server', authJwt: true, crossbarJwt: false},
-    CHAT_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/chat-service', authJwt: true, crossbarJwt: false},
-    EMAIL_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/email-service', authJwt: true, crossbarJwt: false},
-    TICKET_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/ticket-service', authJwt: true, crossbarJwt: false},
-    EMAIL_GATEWAY_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/email-gateway', authJwt: true, crossbarJwt: false},
-    SOCIAL_GATEWAY_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/social-gateway', authJwt: true, crossbarJwt: false},
-    CAMPAIGN_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/campaign-service', authJwt: true, crossbarJwt: false},
-    CCMS_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/ccms-service', authJwt: true, crossbarJwt: false},
-    SERVICE_PIVOT_API: {url: 'https://cc.vietteltelecom.vn/service-pivot', authJwt: true, crossbarJwt: false},
-    REPORT_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/service-report', authJwt: true, crossbarJwt: false},
-    QUALITY_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/quality-service', authJwt: true, crossbarJwt: false},
-    MONITOR_SERVER_API: {url: 'https://cc.vietteltelecom.vn/monitor-server', authJwt: true, crossbarJwt: false},
-    FIREBASE_API: {url: 'https://onesignal.com', authJwt: false, crossbarJwt: false},
-    METABASE_API: {url: 'https://cc.vietteltelecom.vn/metabase', authJwt: false, crossbarJwt: false},
-    HAPPY_CALL_SERVICE_API: {url: 'https://cc.vietteltelecom.vn/happy-call-service', authJwt: true, crossbarJwt: false},
-    CALL_BACK_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/callback-service', authJwt: true, crossbarJwt: false},
+    CROSSBAR: { url: 'https://cc.vietteltelecom.vn/hni6-kapps', authJwt: false, crossbarJwt: true },
+    ACCOUNT_API: { url: 'https://cc.vietteltelecom.vn/account-server', authJwt: true, crossbarJwt: false },
+    ACD_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/acd-service', authJwt: true, crossbarJwt: false },
+    CHAT_SERVER_API: { url: 'https://cc.vietteltelecom.vn/chat-server', authJwt: true, crossbarJwt: false },
+    AGENT_SERVER_API: { url: 'https://cc.vietteltelecom.vn/agent-server', authJwt: true, crossbarJwt: false },
+    AGENT_NOTIFY_SERVER_API: { url: 'https://cc.vietteltelecom.vn/agent-notify-server', authJwt: true, crossbarJwt: false },
+    NOTIFICATION_SERVER_API: { url: 'https://cc.vietteltelecom.vn/notification-server', authJwt: true, crossbarJwt: false },
+    CHAT_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/chat-service', authJwt: true, crossbarJwt: false },
+    EMAIL_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/email-service', authJwt: true, crossbarJwt: false },
+    TICKET_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/ticket-service', authJwt: true, crossbarJwt: false },
+    EMAIL_GATEWAY_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/email-gateway', authJwt: true, crossbarJwt: false },
+    SOCIAL_GATEWAY_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/social-gateway', authJwt: true, crossbarJwt: false },
+    CAMPAIGN_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/campaign-service', authJwt: true, crossbarJwt: false },
+    CCMS_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/ccms-service', authJwt: true, crossbarJwt: false },
+    SERVICE_PIVOT_API: { url: 'https://cc.vietteltelecom.vn/service-pivot', authJwt: true, crossbarJwt: false },
+    REPORT_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/service-report', authJwt: true, crossbarJwt: false },
+    QUALITY_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/quality-service', authJwt: true, crossbarJwt: false },
+    MONITOR_SERVER_API: { url: 'https://cc.vietteltelecom.vn/monitor-server', authJwt: true, crossbarJwt: false },
+    FIREBASE_API: { url: 'https://onesignal.com', authJwt: false, crossbarJwt: false },
+    METABASE_API: { url: 'https://cc.vietteltelecom.vn/metabase', authJwt: false, crossbarJwt: false },
+    HAPPY_CALL_SERVICE_API: { url: 'https://cc.vietteltelecom.vn/happy-call-service', authJwt: true, crossbarJwt: false },
+    CALL_BACK_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/callback-service', authJwt: true, crossbarJwt: false },
   };
 
   const LOCAL_SERVICES = {
-    PIVOT_SERVICE_API: {url: 'http://pivot-service:9999', authJwt: false, crossbarJwt: false}
+    PIVOT_SERVICE_API: { url: 'http://pivot-service:9999', authJwt: false, crossbarJwt: false }
   };
 
   const CALL_BOT = {
@@ -164,9 +165,7 @@
   window.env.CALL_BOT = CALL_BOT;
   window.env.AGENTMATE = AGENTMATE;
   window.env.WHATSAPP = WHATSAPP;
-
-  // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = window.env.processRemoteUrl || '/process/remoteEntry.js';
+  window.env.WEB_PROCESSX = WEB_PROCESSX;
 
   console.log("=========================AGENT_WEB_PROFILE=========================");
   console.log("PROFILE " + PROFILE + ", ENV: ", window.env);

@@ -16,18 +16,19 @@
   const BCCS_URL = "http://10.240.147.246/BCCS_CC/";
   const ZALO_AUTH_URL = "https://oauth.zaloapp.com/v4";
   const ZALO_CALLBACK = "https://cc.vietteltelecom.vn/chat-service/public/api/v1/zalo-accounts/callback";
+  const WEB_PROCESSX = 'http://localhost:4200/remoteEntry.js';
 
   const SERVICES = {
-    CROSSBAR: {url: 'http://10.60.158.230:8010', authJwt: false, crossbarJwt: true},
-    ACCOUNT_API: {url: 'https://demo.moj.gov.vn:8100/account-server', authJwt: true, crossbarJwt: false},
-    ACD_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/acd-service', authJwt: true, crossbarJwt: false},
-    CHAT_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/chat-server', authJwt: true, crossbarJwt: false},
-    AGENT_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/agent-server', authJwt: true, crossbarJwt: false},
-    AGENT_NOTIFY_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/agent-notify-server', authJwt: true, crossbarJwt: false},
-    NOTIFICATION_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/notification-server', authJwt: true, crossbarJwt: false},
-    CHAT_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/chat-service', authJwt: true, crossbarJwt: false},
-    EMAIL_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/email-service', authJwt: true, crossbarJwt: false},
-    TICKET_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/ticket-service', authJwt: true, crossbarJwt: false},
+    CROSSBAR: { url: 'http://10.60.158.230:8010', authJwt: false, crossbarJwt: true },
+    ACCOUNT_API: { url: 'https://demo.moj.gov.vn:8100/account-server', authJwt: true, crossbarJwt: false },
+    ACD_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/acd-service', authJwt: true, crossbarJwt: false },
+    CHAT_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/chat-server', authJwt: true, crossbarJwt: false },
+    AGENT_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/agent-server', authJwt: true, crossbarJwt: false },
+    AGENT_NOTIFY_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/agent-notify-server', authJwt: true, crossbarJwt: false },
+    NOTIFICATION_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/notification-server', authJwt: true, crossbarJwt: false },
+    CHAT_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/chat-service', authJwt: true, crossbarJwt: false },
+    EMAIL_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/email-service', authJwt: true, crossbarJwt: false },
+    TICKET_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/ticket-service', authJwt: true, crossbarJwt: false },
     EMAIL_GATEWAY_SERVICE_API: {
       url: 'https://demo.moj.gov.vn:8100/email-gateway',
       authJwt: true,
@@ -38,25 +39,25 @@
       authJwt: true,
       crossbarJwt: false
     },
-    CAMPAIGN_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/campaign-service', authJwt: true, crossbarJwt: false},
-    CCMS_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/ccms-service', authJwt: true, crossbarJwt: false},
-    SERVICE_PIVOT_API: {url: 'http://10.60.158.111:8200', authJwt: true, crossbarJwt: false},
-    REPORT_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/service-report', authJwt: true, crossbarJwt: false},
-    QUALITY_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/quality-service', authJwt: true, crossbarJwt: false},
-    MONITOR_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/monitor-server', authJwt: true, crossbarJwt: false},
-    FIREBASE_API: {url: 'https://onesignal.com', authJwt: false, crossbarJwt: false},
-    METABASE_API: {url: 'https://demo.moj.gov.vn:8100/metabase', authJwt: false, crossbarJwt: false},
-    SCORE_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/quality-service', authJwt: true, crossbarJwt: false},
-    HAPPY_CALL_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/happy-call-service', authJwt: true, crossbarJwt: false},
-    CALL_BACK_SERVICE_API: {url: 'https://demo.moj.gov.vn:8100/callback-service', authJwt: true, crossbarJwt: false},
-    BOT_SERVER_API: {url: 'https://demo.moj.gov.vn:8100/bot-server', authJwt: true, crossbarJwt: false},
-    CALL_SERVICE_API: {url: '', authJwt: false, crossbarJwt: false},
-    CALL_BOT_SERVICE_API: {url: 'https://171.226.10.112/predict', authJwt: false, crossbarJwt: false}
+    CAMPAIGN_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/campaign-service', authJwt: true, crossbarJwt: false },
+    CCMS_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/ccms-service', authJwt: true, crossbarJwt: false },
+    SERVICE_PIVOT_API: { url: 'http://10.60.158.111:8200', authJwt: true, crossbarJwt: false },
+    REPORT_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/service-report', authJwt: true, crossbarJwt: false },
+    QUALITY_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/quality-service', authJwt: true, crossbarJwt: false },
+    MONITOR_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/monitor-server', authJwt: true, crossbarJwt: false },
+    FIREBASE_API: { url: 'https://onesignal.com', authJwt: false, crossbarJwt: false },
+    METABASE_API: { url: 'https://demo.moj.gov.vn:8100/metabase', authJwt: false, crossbarJwt: false },
+    SCORE_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/quality-service', authJwt: true, crossbarJwt: false },
+    HAPPY_CALL_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/happy-call-service', authJwt: true, crossbarJwt: false },
+    CALL_BACK_SERVICE_API: { url: 'https://demo.moj.gov.vn:8100/callback-service', authJwt: true, crossbarJwt: false },
+    BOT_SERVER_API: { url: 'https://demo.moj.gov.vn:8100/bot-server', authJwt: true, crossbarJwt: false },
+    CALL_SERVICE_API: { url: '', authJwt: false, crossbarJwt: false },
+    CALL_BOT_SERVICE_API: { url: 'https://171.226.10.112/predict', authJwt: false, crossbarJwt: false }
   };
   /*========================================================================*/
 
   const LOCAL_SERVICES = {
-    PIVOT_SERVICE_API: {url: 'http://pivot-service:9999', authJwt: true, crossbarJwt: false}
+    PIVOT_SERVICE_API: { url: 'http://pivot-service:9999', authJwt: true, crossbarJwt: false }
   };
 
   const ZONE_ALIAS = {
@@ -178,7 +179,5 @@
   window.env.CALL_BOT = CALL_BOT;
   window.env.AGENTMATE = AGENTMATE;
   window.env.WHATSAPP = WHATSAPP;
-
-  // Hỗ trợ Micro Frontend cho IPCC Shell
-  window.env.processRemoteUrl = window.env.processRemoteUrl || '/process/remoteEntry.js';
+  window.env.WEB_PROCESSX = WEB_PROCESSX;
 })(this);

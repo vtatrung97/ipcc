@@ -80,20 +80,22 @@
               "browserTarget": "ipcc:build:k8s"
             },
             "development": {
-              "browserTarget": "ipcc:build:development",
-              "port": 4200
+              "browserTarget": "ipcc:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
             "extraWebpackConfig": "webpack.config.js",
-            "port": 4200
+            "liveReload": false
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "cache": {
+      "enabled": false
+    }
   }
 }
