@@ -23,10 +23,10 @@ import { MenuService, MenuItem } from '../../core/services/menu.service';
         
         <div class="presets-bar">
           <span class="preset-label">💡 Chọn mẫu nhanh:</span>
-          <button type="button" class="btn-preset" (click)="setPreset('Báo cáo quy trình', 'proc-reports', '/process', '📊')">
+          <button type="button" class="btn-preset" (click)="setPreset('Báo cáo quy trình', 'proc-reports', '/processX', '📊')">
             ⚡ Báo cáo quy trình (Remote)
           </button>
-          <button type="button" class="btn-preset" (click)="setPreset('Soạn thảo quy trình', 'proc-editor', '/process/create', '✍️')">
+          <button type="button" class="btn-preset" (click)="setPreset('Soạn thảo quy trình', 'proc-editor', '/processX/create', '✍️')">
             ⚡ Soạn thảo quy trình (Remote)
           </button>
           <button type="button" class="btn-preset" (click)="setPreset('Quản lý báo cáo IPCC', 'ipcc2-stats', '/dashboards', '📈')">
@@ -45,7 +45,7 @@ import { MenuService, MenuItem } from '../../core/services/menu.service';
           </div>
           <div class="field">
             <label>Đường dẫn Url *</label>
-            <input type="text" [(ngModel)]="newMenu.url" placeholder="VD: /process hoặc /process/create" />
+            <input type="text" [(ngModel)]="newMenu.url" placeholder="VD: /processX hoặc /processX/create" />
           </div>
           <div class="field">
             <label>Biểu tượng (Icon / Emoji)</label>

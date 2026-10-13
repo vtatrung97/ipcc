@@ -11,16 +11,12 @@ import { catchError } from 'rxjs/operators';
 })
 export class AccountService extends AbstractService {
 
-  constructor(
-    http: HttpClient,
-    toastSvc?: any,
-    translate?: any
-  ) {
-    super(http, toastSvc, translate);
+  constructor(http: HttpClient) {
+    super(http);
   }
 
   get SERVICE_URL(): string {
-    return `${SERVICES?.ACCOUNT_API_URL || '/api/account'}`;
+    return `${(SERVICES as any)?.ACCOUNT_API_URL || SERVICES?.ACCOUNT_API?.url || '/api/account'}`;
   }
 
   getServiceOwner(): Observable<ResponseEnvelope<any>> {

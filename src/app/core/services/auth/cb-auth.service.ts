@@ -68,7 +68,8 @@ export class CbAuthService {
       };
 
       if (forceRequest || !this._kzToken || this.jwtHelper.isTokenExpired(this._kzToken)) {
-        const url = `${SERVICES?.ACCOUNT_API_URL || '/api/account'}/api/v1/realms/${this.authSvc.realmName}/users/${this.authSvc.userId}/zone/${this.authSvc.zoneAlias}/kz-token`;
+        const accountApiUrl = (SERVICES as any)?.ACCOUNT_API_URL || SERVICES?.ACCOUNT_API?.url || '/api/account';
+        const url = `${accountApiUrl}/api/v1/realms/${this.authSvc.realmName}/users/${this.authSvc.userId}/zone/${this.authSvc.zoneAlias}/kz-token`;
         this.http.get<ResponseEnvelope<any>>(url).subscribe({
           next: (res: any) => {
             if (res.status == 'success' && res.data) {

@@ -1,14 +1,26 @@
-**/.angular
-.angular
-**/node_modules
-node_modules
-process/node_modules
-processX/node_modules
-process/split
-split
-dist
-**/dist
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build & Cache
+dist/
+**/dist/
+.angular/
+**/.angular/
+tmp/
+split/
+
+# Git & IDE
 .git
+.vscode
+.idea
+
+# Documentation & Config
+docker/
+learn/
+*.md
+*.yaml
 *.zip
-learn
-tmp
+*.log
+npm-debug.log*
+yarn-debug.log*

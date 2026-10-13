@@ -14,6 +14,7 @@ export function Auth2CodeFlowConfig(realm: string): AuthConfig {
     clientId: 'agent-web',
     responseType: 'code',
     scope: 'openid profile email',
+    requireHttps: KEYCLOAK.requireHttps ?? false,
     showDebugInformation: KEYCLOAK.showDebugInformation,
     strictDiscoveryDocumentValidation: KEYCLOAK.strictDiscoveryDocumentValidation,
     logoutUrl: `${KEYCLOAK.endpoint}/realms/${realm}/protocol/openid-connect/logout?client_id=agent-web&post_logout_redirect_uri=${encodeURIComponent(window.location.origin)}`
@@ -37,23 +38,28 @@ export class AuthService {
       const { hostname } = new URL(window.location.href);
       let subl: string, sub2: string;
       [subl, sub2] = hostname.split('.'); // subdomain
-      this._tenant = subl || 'ipcc';
-      if (ZONE_ALIAS) {
-        Object.keys(ZONE_ALIAS).forEach(key => {
-          const typedKey = key as keyof typeof ZONE_ALIAS;
-          if (ZONE_ALIAS[typedKey] === subl) {
-            this._zoneAlias = subl;
-            this._tenant = sub2;
-          }
-        });
+      if (subl && subl !== 'localhost' && subl !== '127') {
+        this._tenant = subl;
+        if (ZONE_ALIAS) {
+          Object.keys(ZONE_ALIAS).forEach(key => {
+            const typedKey = key as keyof typeof ZONE_ALIAS;
+            if (ZONE_ALIAS[typedKey] === subl) {
+              this._zoneAlias = subl;
+              this._tenant = sub2;
+            }
+          });
+        }
+      } else {
+        this._tenant = KEYCLOAK?.realm || 'ipcc';
       }
     } catch (e) {
-      this._tenant = 'ipcc';
+      this._tenant = KEYCLOAK?.realm || 'ipcc';
     }
 
     this._impersonatedTenant = this._tenant;
     console.log('[AuthService] Construct with realm:', this._tenant);
     if (this.oauthSvc && KEYCLOAK?.endpoint) {
+      this.oauthSvc.requireHttps = KEYCLOAK.requireHttps ?? false;
       this.oauthSvc.configure(Auth2CodeFlowConfig(this._tenant));
 
       /* pyc 1355: 21/08/2026 */

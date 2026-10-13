@@ -28,7 +28,7 @@ const originalConfig = {
           use: ['raw-loader']
         },
         {
-          test: /\.css$/,
+          test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
           use: [
             {
               loader: 'style-loader',
@@ -69,6 +69,12 @@ const mfConfig = withModuleFederationPlugin({
 module.exports = {
   ...mfConfig,
   ...originalConfig,
+  resolve: {
+    ...mfConfig.resolve,
+    fallback: {
+      url: false
+    }
+  },
 
   module: {
     ...mfConfig.module,
@@ -80,6 +86,7 @@ module.exports = {
 
   output: {
     ...mfConfig.output,
+    scriptType: 'text/javascript',
     publicPath: '/'
   },
 

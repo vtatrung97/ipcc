@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class TokenService extends AbstractService {
-  _permissions: any = null;
+  _permissions: any = {};
   _menu: any = null;
   _menuUrl: any = null;
   clients = [
@@ -25,7 +25,7 @@ export class TokenService extends AbstractService {
     private accountService: AccountService,
     private router: Router
   ) {
-    super(http);
+    super(http, null as any, null as any);
 
     if (this.authSvc.isAuthenticated()) {
       const temp = localStorage.getItem('user_permissions');
@@ -102,7 +102,16 @@ export class TokenService extends AbstractService {
     }));
   }
 
+  public getListScopes(client?: string): any[] {
+    if (!this._permissions) return [];
+    if (!client) return [];
+    return this._permissions[client]?.permissions || [];
+  }
+
   public checkRouter(url: string): boolean {
+    if (!this._menuUrl || this._menuUrl.length === 0) {
+      return true;
+    }
     return url == '/' || (this._menuUrl && this._menuUrl.filter((_url: any) => _url != '' && url.includes(_url)).length > 0) || url.includes('role-menu') || url.includes('personal-profile') || url.includes('process');
   }
 

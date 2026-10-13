@@ -1,0 +1,73 @@
+# ==============================================================================
+# DOCKERFILE MỚI (CHUẨN HÓA CHO JENKINS CI/CD & MICRO FRONTEND IPCC)
+# ==============================================================================
+
+# Khai báo tiền tố Private Registry nội bộ (có thể override qua docker build --build-arg REGISTRY=...)
+ARG REGISTRY=10.29.75.6/ipcc2.0/
+
+# ------------------------------------------------------------------------------
+# Stage 1: Build IPCC Host App (Shell)
+# ------------------------------------------------------------------------------
+FROM ${REGISTRY}node:18-alpine AS builder
+
+WORKDIR /app
+
+# Tăng giới hạn bộ nhớ Node.js tránh lỗi JavaScript heap out of memory khi build Angular
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
+# Tận dụng Docker layer caching: Copy manifest dependencies trước
+COPY package*.json ./
+# Dùng npm ci thay cho npm install để đảm bảo đồng nhất dependencies theo package-lock.json
+RUN npm ci --legacy-peer-deps
+
+# Copy toàn bộ mã nguồn Host IPCC
+COPY . .
+
+# Build ứng dụng frontend Host
+# Lưu ý: Thay đổi configuration tùy môi trường (--configuration=production hoặc --configuration=k8s)
+ARG BUILD_ENV=production
+RUN npm run build -- --configuration=${BUILD_ENV}
+
+# ------------------------------------------------------------------------------
+# Stage 2: Build Remote App (Process) - Phục vụ Micro Frontend
+# ------------------------------------------------------------------------------
+FROM ${REGISTRY}node:18-alpine AS process-builder
+
+WORKDIR /app/processX
+
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
+COPY processX/package*.json ./
+RUN npm ci --legacy-peer-deps
+
+COPY processX/ ./
+ARG BUILD_ENV=production
+RUN npm run build -- --configuration=${BUILD_ENV} --base-href=/processX/ --deploy-url=/processX/
+
+# ------------------------------------------------------------------------------
+# Stage 3: Nginx Runtime
+# ------------------------------------------------------------------------------
+FROM ${REGISTRY}nginx:1.23.3-alpine
+
+# Xóa các file mặc định của Nginx
+RUN rm -rf /usr/share/nginx/html/*
+
+# 1. Copy kết quả build của Host IPCC vào thư mục web gốc
+# (Lưu ý: outputPath trong angular.json hiện tại là dist/ipcc)
+COPY --from=builder /app/dist/ipcc /usr/share/nginx/html/
+
+# 2. Copy kết quả build của Remote ProcessX vào thư mục con /processX
+COPY --from=process-builder /app/processX/dist/processX /usr/share/nginx/html/processX
+
+# 3. Di chuyển thư mục assets/register (Nếu tồn tại thì mới di chuyển)
+RUN if [ -d /usr/share/nginx/html/assets/register ]; then \
+        mv /usr/share/nginx/html/assets/register /usr/share/nginx/html/; \
+    fi
+
+# 4. Copy file cấu hình Nginx tùy chỉnh hỗ trợ SPA routing và CORS cho Micro Frontend Module Federation
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

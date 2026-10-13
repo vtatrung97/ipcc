@@ -1,5 +1,6 @@
 export interface KeycloakConfig {
     endpoint: string;
+    realm?: string;
     requireHttps: boolean;
     showDebugInformation: boolean;
     strictDiscoveryDocumentValidation: boolean;

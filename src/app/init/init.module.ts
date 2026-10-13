@@ -9,11 +9,13 @@ export function loadConfig(tokenSvc: TokenService, authService: AuthService, cbA
   return () => {
     return authService.isLoggedIn().then((loggedIn) => {
       if (loggedIn) {
-        const sources = [
-          cbAuthSvc.maybeRequestKzToken(),
-          tokenSvc.initAuthorizationList()
-        ];
-        return forkJoin(sources).pipe(map(() => (null))).toPromise();
+        // Tạm thời comment các API chưa dùng/chưa có backend để tránh lỗi ERR_NAME_NOT_RESOLVED
+        // const sources = [
+        //   cbAuthSvc.maybeRequestKzToken(),
+        //   tokenSvc.initAuthorizationList()
+        // ];
+        // return forkJoin(sources).pipe(map(() => (null))).toPromise();
+        return Promise.resolve();
       } else {
         return Promise.resolve();
       }
